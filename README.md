@@ -1,4 +1,3 @@
-```markdown
 # IT Asset Management System
 
 A web-based internal inventory and asset lifecycle management system built with **CodeIgniter 4** to streamline hardware tracking, device mutation logs, damage reporting, and IT operational planning.
