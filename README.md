@@ -1,68 +1,72 @@
-# CodeIgniter 4 Application Starter
+# IT Asset Management System
 
-## What is CodeIgniter?
+A web-based internal inventory and asset lifecycle management system built with **CodeIgniter 4** to streamline hardware tracking, device mutations, damage logs, and IT operational planning.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+---
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## 🚀 Key Features
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+* **IT Asset Inventory Tracking:** Complete hardware lifecycle records (desktops, laptops, network gear, specs, serial numbers, and status).
+* **Asset Mutation & Transfer Logs:** Detailed history tracking for asset movements and assignments across departments or users (`LogMutasi`).
+* **Maintenance & Issue Management:** Operational logging for hardware damages, repair notes, and technical troubleshooting (`CatatanKerusakan` & `CatatanIt`).
+* **IT Strategic Planning:** Built-in module for tracking IT procurement plans, system upgrades, and task roadmaps (`CatatanPlanning`).
+* **Role-Based Authentication:** User management and access control for system administrators and IT staff.
+* **Database Migrations & Seeders:** Included migration files and initial seeders for seamless local setup.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+---
 
-## Installation & updates
+## 🛠️ Tech Stack
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+* **Framework:** PHP 8.x, CodeIgniter 4
+* **Frontend:** Bootstrap / AdminLTE, JavaScript, HTML5/CSS3
+* **Database:** MySQL
+* **Environment:** Compatible with Apache, Nginx, Laragon, or XAMPP
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+---
 
-## Setup
+## ⚙️ Local Installation & Setup
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+1. **Clone Repository**
+   ```bash
+   git clone [https://github.com/noviandf/it-asset-management.git](https://github.com/noviandf/it-asset-management.git)
+   cd it-asset-management
+Install Dependencies
 
-## Important Change with index.php
+Bash
+composer install
+Environment Configuration
+Copy the example environment file and set up your local database credentials:
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Bash
+cp env .env
+Update .env settings:
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+Ini, TOML
+CI_ENVIRONMENT = development
 
-**Please** read the user guide for a better explanation of how CI4 works!
+database.default.hostname = localhost
+database.default.database = db_asset_management
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+Run Database Migrations & Seeders
 
-## Repository Management
+Bash
+php spark migrate
+php spark db:seed InitSeeder
+Start Development Server
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+Bash
+php spark serve
+Access the web application at http://localhost:8080.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 8.1 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+📁 Core Directory Structure
+Plaintext
+app/
+├── Config/            # Application & Database Configuration
+├── Controllers/       # AsetIt, LogMutasi, CatatanIt, CatatanKerusakan, Auth
+├── Database/          # Migrations & InitSeeder
+├── Models/            # AsetItModel, LogMutasiModel, CatatanModels
+└── Views/             # UI Templates for Assets, Logs, and Dashboard
+🔒 Security & Sanitization Note
+This repository has been fully sanitized for portfolio and demonstration purposes. All proprietary database SQL dumps, internal corporate IP addresses, employee details, and sensitive credentials have been removed or replaced with mock placeholder data.
