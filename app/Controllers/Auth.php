@@ -24,6 +24,11 @@ class Auth extends BaseController
     $username = $this->request->getPost('username');
     $password = $this->request->getPost('password');
 
+    $throttler = \Config\Services::throttler();
+    if ($throttler->check('login_attempts', 5, MINUTE) === false) {
+        return redirect()->back()->with('error', 'Terlalu banyak percobaan login. Silakan tunggu 1 menit.')->withInput();
+    }
+
     $user = $this->userModel->where('username', $username)->first();
 
     if ($user) {

@@ -6,11 +6,23 @@
             <h4 class="m-0 text-white"><i class="bi bi-tools me-2"></i>Log Kerusakan & Servis</h4>
             <small class="text-muted">Monitoring perbaikan hardware & software</small>
         </div>
-        <a href="<?= site_url('catatankerusakan/create') ?>" class="btn btn-neon btn-sm px-3 rounded-pill">
-            <i class="bi bi-plus-lg me-1"></i> Buat Laporan
-        </a>
+        <div>
+            <a href="<?= site_url('catatankerusakan/create') ?>" class="btn btn-neon btn-sm px-3 rounded-pill">
+                <i class="bi bi-plus-lg me-1"></i> Buat Laporan
+            </a>
+        </div>
     </div>
+    
     <div class="card-body p-0">
+        <!-- Filter Buttons -->
+        <div class="px-3 py-3 border-bottom border-secondary bg-dark bg-opacity-25 d-flex gap-2 flex-wrap">
+            <span class="text-muted small align-self-center me-2"><i class="bi bi-funnel"></i> Quick Filter:</span>
+            <button class="btn btn-sm btn-primary active dt-filter-btn" data-filter="all">Semua</button>
+            <button class="btn btn-sm btn-outline-secondary dt-filter-btn" data-filter="Belum Diperbaiki">Belum Diperbaiki</button>
+            <button class="btn btn-sm btn-outline-secondary dt-filter-btn" data-filter="Proses Perbaikan">Proses Perbaikan</button>
+            <button class="btn btn-sm btn-outline-secondary dt-filter-btn" data-filter="Selesai Perbaikan">Selesai Perbaikan</button>
+        </div>
+
         <div class="table-responsive">
             <table class="table table-dark-custom table-hover m-0 align-middle small">
                 <thead>

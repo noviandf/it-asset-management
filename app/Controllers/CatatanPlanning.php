@@ -30,6 +30,7 @@ class CatatanPlanning extends BaseController
             'deskripsi' => $this->request->getPost('deskripsi'),
             'tanggal' => $this->request->getPost('tanggal'),
             'status' => $this->request->getPost('status'),
+            'pic' => $this->request->getPost('pic'),
         ])) {
             session()->setFlashdata('success', 'Catatan planning berhasil ditambahkan.');
         } else {
@@ -46,11 +47,23 @@ class CatatanPlanning extends BaseController
 
     public function update($id)
     {
+        $status = $this->request->getPost('status');
+        $planning = $this->catatanPlanningModel->find($id);
+        
+        $tanggal_selesai = $planning['tanggal_selesai'] ?? null;
+        if ($status == 'DONE' && empty($tanggal_selesai)) {
+            $tanggal_selesai = date('Y-m-d');
+        } elseif ($status != 'DONE') {
+            $tanggal_selesai = null;
+        }
+
         if ($this->catatanPlanningModel->update($id, [
             'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
             'tanggal' => $this->request->getPost('tanggal'),
-            'status' => $this->request->getPost('status'),
+            'status' => $status,
+            'pic' => $this->request->getPost('pic'),
+            'tanggal_selesai' => $tanggal_selesai
         ])) {
             session()->setFlashdata('success', 'Catatan planning berhasil diperbarui.');
         } else {

@@ -8,11 +8,17 @@
             </div>
             <div class="card-body">
                 <form action="<?= site_url('catatankerusakan/update/'.$kerusakan['id']) ?>" method="post">
+                    <?= csrf_field() ?>
                     
                     <div class="row mb-3">
                         <div class="col-md-8">
-                            <label class="form-label text-muted">Nama Barang</label>
-                            <input type="text" name="nama_barang" class="form-control bg-dark text-white border-secondary" value="<?= esc($kerusakan['nama_barang']) ?>" required>
+                            <label class="form-label text-info">Aset yang Rusak (Pilih dari Daftar)</label>
+                            <select name="barang_id" class="form-select bg-dark text-white border-secondary">
+                                <option value="">-- Bukan Aset Terdaftar --</option>
+                                <?php foreach($barang as $b): ?>
+                                    <option value="<?= $b['id'] ?>" <?= ($kerusakan['barang_id'] ?? null) == $b['id'] ? 'selected' : '' ?>><?= esc($b['no_aktiva']) ?> - <?= esc($b['nama_aset']) ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label text-muted">Jumlah</label>

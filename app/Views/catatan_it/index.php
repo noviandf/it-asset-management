@@ -7,7 +7,17 @@
             <i class="bi bi-plus-lg me-1"></i> Tambah PC
         </a>
     </div>
+    
     <div class="card-body p-0">
+        <!-- Filter Buttons -->
+        <div class="px-3 py-3 border-bottom border-secondary bg-dark bg-opacity-25 d-flex gap-2 flex-wrap">
+            <span class="text-muted small align-self-center me-2"><i class="bi bi-funnel"></i> Lokasi:</span>
+            <button class="btn btn-sm btn-primary active dt-filter-btn" data-filter="all">Semua</button>
+            <button class="btn btn-sm btn-outline-secondary dt-filter-btn" data-filter="Ruang Agent">Ruang Agent</button>
+            <button class="btn btn-sm btn-outline-secondary dt-filter-btn" data-filter="Ruang Management">Ruang Management</button>
+            <button class="btn btn-sm btn-outline-secondary dt-filter-btn" data-filter="Ruang Server">Ruang Server</button>
+        </div>
+
         <div class="table-responsive">
             <table class="table table-dark-custom table-hover m-0 align-middle">
                 <thead>

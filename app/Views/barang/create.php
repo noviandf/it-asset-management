@@ -7,7 +7,8 @@
                 <h4 class="m-0 text-white">Input Distribusi Aset Baru</h4>
             </div>
             <div class="card-body">
-                <form action="<?= site_url('barang/store') ?>" method="post">
+                <form action="<?= site_url('barang/store') ?>
+    <?= csrf_field() ?>" method="post">
                     
                     <div class="row mb-4">
                         <div class="col-md-7">

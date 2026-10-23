@@ -8,6 +8,7 @@
         </div>
         <div class="card-body">
             <form action="<?= site_url('catatanit/store') ?>" method="post">
+                <?= csrf_field() ?>
                 
                 <div class="row mb-3">
                     <div class="col-md-6">
@@ -15,8 +16,13 @@
                         <input type="text" name="nama_pc" class="form-control bg-dark text-white border-secondary" placeholder="Ex: Admin Gudang" required>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label text-muted">Lokasi</label>
-                        <input type="text" name="lokasi" class="form-control bg-dark text-white border-secondary" placeholder="Ex: Lantai 2">
+                        <label class="form-label text-muted">Ruangan / Lokasi</label>
+                        <select name="lokasi" class="form-select bg-dark text-white border-secondary" required>
+                            <option value="Ruang Management">Ruang Management</option>
+                            <option value="Ruang Agent">Ruang Agent</option>
+                            <option value="Ruang Server">Ruang Server</option>
+                            <option value="Lantai 3">Lantai 3</option>
+                        </select>
                     </div>
                 </div>
 

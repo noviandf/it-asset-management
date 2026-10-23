@@ -52,6 +52,7 @@ class CatatanIt extends BaseController
         $data = [
             'nama_pc'       => $this->request->getPost('nama_pc'),
             'ip_address'    => $this->request->getPost('ip_address'),
+            'lokasi'        => $this->request->getPost('lokasi'),
             'anydesk_id'    => $this->request->getPost('anydesk_id'), // Perbaikan: Gunakan anydesk_id
             'tanggal_catat' => $this->request->getPost('tanggal_catat'),
             'keterangan'    => $this->request->getPost('keterangan'),

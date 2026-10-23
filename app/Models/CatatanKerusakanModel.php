@@ -9,6 +9,7 @@ class CatatanKerusakanModel extends Model
     
     // Daftar lengkap kolom yang bisa diisi
     protected $allowedFields = [
+        'barang_id',
         'nama_barang', 
         'jumlah', 
         'ruang', 

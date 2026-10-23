@@ -8,11 +8,17 @@
             </div>
             <div class="card-body">
                 <form action="<?= site_url('catatankerusakan/store') ?>" method="post">
+                    <?= csrf_field() ?>
                     
                     <div class="row mb-3">
                         <div class="col-md-8">
-                            <label class="form-label text-muted">Nama Barang</label>
-                            <input type="text" name="nama_barang" class="form-control bg-dark text-white border-secondary" placeholder="Contoh: Printer Epson L3110" required>
+                            <label class="form-label text-info">Barang IT yang Rusak</label>
+                            <select name="barang_id" class="form-select bg-dark text-white border-secondary">
+                                <option value="">-- Bukan Aset Terdaftar --</option>
+                                <?php foreach ($barang as $b): ?>
+                                    <option value="<?= $b['id'] ?>"><?= esc($b['no_aktiva']) ?> - <?= esc($b['nama_aset']) ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label text-muted">Jumlah</label>

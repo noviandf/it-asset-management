@@ -7,7 +7,8 @@
                 <h4 class="m-0 text-white">Update Distribusi Aset</h4>
             </div>
             <div class="card-body">
-                <form action="<?= site_url('barang/update/'.$barang['id']) ?>" method="post">
+                <form action="<?= site_url('barang/update/'.$barang['id']) ?>
+    <?= csrf_field() ?>" method="post">
                     
                     <div class="row mb-4">
                         <div class="col-md-7">

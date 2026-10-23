@@ -1,29 +1,47 @@
 <?= view('layout/header') ?>
 
-<div class="container mt-4">
-    <h3>Edit Catatan Planning</h3>
-    <form action="/catatanplanning/update/<?= $planning['id'] ?>" method="post">
-        <div class="mb-3">
-            <label>Judul</label>
-            <input type="text" name="judul" class="form-control" value="<?= esc($planning['judul']) ?>" required>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card card-custom">
+            <div class="card-header card-header-custom d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 text-white"><i class="bi bi-pencil-square me-2"></i>Edit Catatan Planning</h5>
+                <a href="<?= site_url('catatanplanning') ?>" class="btn btn-sm btn-outline-secondary"><i class="bi bi-arrow-left"></i> Kembali</a>
+            </div>
+            <div class="card-body">
+                <form action="<?= site_url('catatanplanning/update/'.$planning['id']) ?>" method="post">
+                    <?= csrf_field() ?>
+                    <div class="mb-3">
+                        <label class="form-label text-muted">Rencana Kegiatan (Judul)</label>
+                        <input type="text" name="judul" class="form-control bg-dark text-white border-secondary" value="<?= esc($planning['judul']) ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted">Deskripsi Detail</label>
+                        <textarea name="deskripsi" class="form-control bg-dark text-white border-secondary" rows="3" required><?= esc($planning['deskripsi']) ?></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label text-muted">PIC (Penanggung Jawab)</label>
+                            <input type="text" name="pic" class="form-control bg-dark text-white border-secondary" value="<?= esc($planning['pic'] ?? '') ?>" placeholder="Contoh: Admin">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label text-muted">Target Tanggal Selesai</label>
+                            <input type="date" name="tanggal" class="form-control bg-dark text-white border-secondary" value="<?= esc($planning['tanggal']) ?>" required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label text-muted">Status</label>
+                        <select name="status" class="form-control bg-dark text-white border-secondary">
+                            <option value="PENDING" <?= ($planning['status'] == 'PENDING') ? 'selected' : '' ?>>Pending (Belum Terlaksana)</option>
+                            <option value="IN SUBMISSION" <?= ($planning['status'] == 'IN SUBMISSION') ? 'selected' : '' ?>>In Submission (Dalam Pengajuan)</option>
+                            <option value="IN PROGRESS" <?= ($planning['status'] == 'IN PROGRESS') ? 'selected' : '' ?>>In Progress (Sedang Dikerjakan)</option>
+                            <option value="DONE" <?= ($planning['status'] == 'DONE') ? 'selected' : '' ?>>Done (Selesai)</option>
+                            <option value="CANCELED" <?= ($planning['status'] == 'CANCELED') ? 'selected' : '' ?>>Canceled (Dibatalkan)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-neon w-100"><i class="bi bi-save me-1"></i> Update Plan</button>
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label>Deskripsi</label>
-            <textarea name="deskripsi" class="form-control" required><?= esc($planning['deskripsi']) ?></textarea>
-        </div>
-        <div class="mb-3">
-            <label>Tanggal</label>
-            <input type="date" name="tanggal" class="form-control" value="<?= esc($planning['tanggal']) ?>" required>
-        </div>
-        <div class="mb-3">
-            <label>Status</label>
-            <select name="status" class="form-control">
-                <option value="Belum Terlaksana" <?= ($planning['status'] == 'Belum Terlaksana') ? 'selected' : '' ?>>Belum Terlaksana</option>
-                <option value="Terlaksana" <?= ($planning['status'] == 'Terlaksana') ? 'selected' : '' ?>>Terlaksana</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-success">Update</button>
-        <a href="/catatanplanning" class="btn btn-secondary">Kembali</a>
-    </form>
+    </div>
 </div>
 <?= view('layout/footer') ?>
