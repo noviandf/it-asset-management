@@ -1,23 +1,24 @@
+```markdown
 # IT Asset Management System
 
-A web-based internal inventory and asset lifecycle management system built with **CodeIgniter 4** to streamline hardware tracking, device mutations, damage logs, and IT operational planning.
+A web-based internal inventory and asset lifecycle management system built with **CodeIgniter 4** to streamline hardware tracking, device mutation logs, damage reporting, and IT operational planning.
 
 ---
 
 ## 🚀 Key Features
 
-* **IT Asset Inventory Tracking:** Complete hardware lifecycle records (desktops, laptops, network gear, specs, serial numbers, and status).
-* **Asset Mutation & Transfer Logs:** Detailed history tracking for asset movements and assignments across departments or users (`LogMutasi`).
-* **Maintenance & Issue Management:** Operational logging for hardware damages, repair notes, and technical troubleshooting (`CatatanKerusakan` & `CatatanIt`).
-* **IT Strategic Planning:** Built-in module for tracking IT procurement plans, system upgrades, and task roadmaps (`CatatanPlanning`).
-* **Role-Based Authentication:** User management and access control for system administrators and IT staff.
-* **Database Migrations & Seeders:** Included migration files and initial seeders for seamless local setup.
+* **IT Asset Inventory Tracking:** Complete hardware lifecycle records (desktops, laptops, network gear, specifications, serial numbers, and operational status).
+* **Asset Mutation & Transfer Logs:** Detailed history tracking for asset movements and user/department reassignments (`LogMutasi`).
+* **Maintenance & Issue Management:** Technical logs for hardware failures, repair status, and IT troubleshooting notes (`CatatanKerusakan` & `CatatanIt`).
+* **IT Strategic Planning:** Built-in module for tracking IT procurement plans, system upgrades, and maintenance roadmaps (`CatatanPlanning`).
+* **Role-Based Authentication & User Access:** Access control and account management for system administrators and IT staff (`Auth` & `User`).
+* **Database Migrations & Seeders:** Fully structured schema migrations and initial database seeders for instant setup.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Framework:** PHP 8.x, CodeIgniter 4
+* **Backend Framework:** PHP 8.x, CodeIgniter 4
 * **Frontend:** Bootstrap / AdminLTE, JavaScript, HTML5/CSS3
 * **Database:** MySQL
 * **Environment:** Compatible with Apache, Nginx, Laragon, or XAMPP
@@ -30,18 +31,26 @@ A web-based internal inventory and asset lifecycle management system built with 
    ```bash
    git clone [https://github.com/noviandf/it-asset-management.git](https://github.com/noviandf/it-asset-management.git)
    cd it-asset-management
-Install Dependencies
 
-Bash
+```
+
+2. **Install Dependencies**
+```bash
 composer install
-Environment Configuration
-Copy the example environment file and set up your local database credentials:
 
-Bash
+```
+
+
+3. **Environment Configuration**
+Copy the example environment file and configure your local database credentials:
+```bash
 cp env .env
-Update .env settings:
 
-Ini, TOML
+```
+
+
+Update settings in `.env`:
+```ini
 CI_ENVIRONMENT = development
 
 database.default.hostname = localhost
@@ -49,24 +58,47 @@ database.default.database = db_asset_management
 database.default.username = root
 database.default.password = 
 database.default.DBDriver = MySQLi
-Run Database Migrations & Seeders
 
-Bash
+```
+
+
+4. **Run Database Migrations & Seeders**
+```bash
 php spark migrate
 php spark db:seed InitSeeder
-Start Development Server
 
-Bash
+```
+
+
+5. **Start Development Server**
+```bash
 php spark serve
-Access the web application at http://localhost:8080.
 
-📁 Core Directory Structure
-Plaintext
+```
+
+
+*Access the web application at `http://localhost:8080`.*
+
+---
+
+## 📁 Core Directory Structure
+
+```text
 app/
-├── Config/            # Application & Database Configuration
-├── Controllers/       # AsetIt, LogMutasi, CatatanIt, CatatanKerusakan, Auth
-├── Database/          # Migrations & InitSeeder
+├── Config/            # Application, Security, Routes, & Database Configuration
+├── Controllers/       # AsetIt, LogMutasi, CatatanIt, CatatanKerusakan, Auth, User
+├── Database/          # Schema Migrations & InitSeeder
 ├── Models/            # AsetItModel, LogMutasiModel, CatatanModels
-└── Views/             # UI Templates for Assets, Logs, and Dashboard
-🔒 Security & Sanitization Note
-This repository has been fully sanitized for portfolio and demonstration purposes. All proprietary database SQL dumps, internal corporate IP addresses, employee details, and sensitive credentials have been removed or replaced with mock placeholder data.
+└── Views/             # UI Templates for Assets, Mutations, Logs, and Dashboard
+
+```
+
+---
+
+## 🔒 Security & Sanitization Note
+
+This repository has been fully sanitized for portfolio and demonstration purposes. All proprietary database SQL dumps, internal corporate IP addresses, employee details, and sensitive production credentials have been scrubbed or replaced with mock placeholder data.
+
+```
+
+```
